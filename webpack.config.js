@@ -5,6 +5,17 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+  },
+  devServer: {
+    contentBase: './dist',
+  },
+  resolve: {
+    extensions: ['.ts', '.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    },
+    devtool: '#eval-source-map',
   },
   module: {
          rules: [
@@ -17,6 +28,16 @@ module.exports = {
              ],
            },
            {
+            test: /\.vue$/,
+            loader: 'vue-loader',
+            options: {
+              loaders: {
+                'scss': 'vue-style-loader!css-loader!sass-loader',
+                'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+              }
+            }
+          },
+           {
               test: /\.(png|svg|jpg|gif)$/,
               use: [
                 'file-loader',
@@ -28,6 +49,16 @@ module.exports = {
                 'file-loader',
               ],
             },
+            {
+              test: /\.m?js$/,
+              exclude: /(node_modules|bower_components)/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: ['@babel/preset-env']
+                }
+              }
+            }
          ],
        },
 };

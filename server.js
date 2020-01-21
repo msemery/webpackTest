@@ -1,16 +1,18 @@
-//imports
-let express = require('express');
+const express = require('express');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
 
-//instanciate server
-let server = express();
+const app = express();
+const config = require('./webpack.config.js');
+const compiler = webpack(config);
 
-//config route
-server.get('/', function(req, res) {
-    res.setHeader('Content-Type', 'text/html');
-    res.status(200).send('<h1>Bonjour sur mon serveur</h1>')
-});
+// Tell express to use the webpack-dev-middleware and use the webpack.config.js
+// configuration file as a base.
+app.use(webpackDevMiddleware(compiler, {
+  publicPath: config.output.publicPath,
+}));
 
-//lauch server
-server.listen(8080, function() {
-    console.log('server en écoute');
+// Serve the files on port 3000.
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!\n');
 });
