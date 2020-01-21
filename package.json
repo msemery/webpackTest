@@ -1,14 +1,14 @@
 {
-  "name": "webpack-demo",
+  "name": "test-webpack-nodejs-vuejs",
   "version": "1.0.0",
-  "description": "",
+  "description": "server HTTP",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "Marion Semery",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^3.4.2",
@@ -20,6 +20,16 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "lodash": "^4.17.15"
-  }
+  },
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msemery/webpackTest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/msemery/webpackTest/issues"
+  },
+  "homepage": "https://github.com/msemery/webpackTest#readme"
 }
