@@ -148,5 +148,85 @@ module.exports = {
   <p>executez la commande:</p>
   >npm run build
 
+  **Utiliser un serveur webpack**
 
+ <p> Faire la commande:</p>
+> npm install --save-dev webpack-dev-server
 
+<h2>Modifier la config dans webpack.config.js</h2>
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+  const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+  module.exports = {
+    mode: 'development',
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js',
+    },
+    devtool: 'inline-source-map',
++   devServer: {
++     contentBase: './dist',
++   },
+    plugins: [
+      // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin
+      new CleanWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        title: 'Development',
+      }),
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+  };
+
+<h2>Ajouter dans package.json</h2>
+
+{
+    "name": "development",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "watch": "webpack --watch",
++     "start": "webpack-dev-server --open",
+      "build": "webpack"
+    },
+
+<p>Maintenant lancer: </p>
+
+> npm start
+
+**Installer vuejs**
+**Installer le vue loader**
+
+<h2>Dans webpack.config.js</h2>
+onst VueLoaderPlugin = require('vue-loader/lib/plugin');
+
+module.exports = {
+  entry: {
+     idexJs: './src/index.js',
+     vueJs: '.src/vue.js',
+  },
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  module: {
+    rules: [
+      // ... other rules
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      }
+    ]
+  },
+  plugins: [
+    // make sure to include the plugin!
+    new VueLoaderPlugin()
+  ],
+
+  **Installer sass-loader**
+  **Installer css-loader et style-loader**
