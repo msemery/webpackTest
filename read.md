@@ -230,3 +230,30 @@ module.exports = {
 
   **Installer sass-loader**
   **Installer css-loader et style-loader**
+
+  **Les bases de vueJs**
+  On l'initialise via la variable vue
+  on en fait une instance
+  el = élément html dans lequel on manipule du vue js
+  >new Vue({
+  >  el:''
+  >})
+  <h2>Afficher les variables dans le html</h2>
+  data contient toute nos propriétés. Dans le html le {{}} signifie qu'il y a du code à interprété
+
+  <h2> Créer les méthodes</h2>
+  on créé les méthodes avec -> methods: {}, qui contiendra des objets qui seront des fonctions
+
+>new Vue({
+>  el:'#app',
+>  data: {
+>     message:'super intro'
+>  },
+>  methods: {
+>   reverseTitle: function() {
+>     this.message = this.message.split('').reverse('').join('')
+>    }
+>  }
+>})
+
+Le nom de la propriété c'est reverseTitle. Tous les objets courant (this) vont être contenu dans data
