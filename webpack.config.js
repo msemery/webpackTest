@@ -8,11 +8,17 @@ module.exports = {
    
     entry: {
         indexJs: './src/index.js',
+        another: './src/another-module.js',
     },
     output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
     },
+        optimization: {
+         splitChunks: {
+           chunks: 'all',
+         },
+       },  
     module: {
     rules: [
         // ... other rules
