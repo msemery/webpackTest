@@ -1,14 +1,16 @@
 import Vue from 'vue';
 
-let app = new Vue ({
-    el : '#app',
+var app = new Vue({
+    el: '#app',
     data: {
-        message: 'Bonjour Vue'
+      message: '',
+      strongTag: '<strong>Important!</strong>'
+//Vue n'interprète pas le html
     },
     methods: {
-        reverseTitle: function() {
-            this.message = this.message.split('').reverse('').join('')
-        }
+      reverseMessage: function () {
+        this.message = this.message.split('').reverse().join('')
+      }
     }
+  })
 
-})

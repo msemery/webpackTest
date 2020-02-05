@@ -5,8 +5,26 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
   </head>
   <body>
-    <div id="app">{{ message }}</div>
-    <button v-on:click="reverseTitle">Inverser</button>
+    <div id="app">{{ message }}
+      <p>{{ message }}</p>
+        <!--Les doubles accolades, peuvent être utiliser que dans un contenu d'éléments
+        Quand on est dans une balise, il faut utiliser v-bind pour signifier que l'argument n'est
+        plus un argument html mais un argument vue
+        Le raccourcit consiste à mettre juste ":" devant l'argument-->
+        <button v-on:click="reverseMessage">Reverse Message</button>
+        <p v-bind:title="message">Lorem ipsum foo bar baz, lorem ipsum</p>
+        <div :class="message">lorem ipsum</div>
+        <p v-once>{{ message }}</p>
+        <p v-once :title="message">Lorem ipsum foo bar baz, lorem ipsum</p>
+        <!--v-once permet de garder le premier effet, et seulement celui là
+        Fonctionne aussi avec les attributs
+        Fonctionne aussi avec les enfants-->
+        <span v-html="strongTag"></span>
+        <!--Pour intégrer du html en vue js, il faut utiliser l'attribut v-html-->
+        <input type="text" v-model="message">
+        <!--v-model sert à lier une variable-->
+    </div>
+   
     
     <script src="main.js"></script>
   </body>
